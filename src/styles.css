@@ -2,3 +2,63 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*
+{
+    box-sizing: border-box;
+}
+
+/* Global variables */
+:root{
+    --default-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    --medium-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --strong-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+/* ---- */
+
+
+.global-input
+{
+    height: 45px;
+    border-radius: 4px;
+    border: 2px solid #cccc;
+    padding: 0px;
+    margin: 0;
+    font-size: 1.3rem;
+    display: block;
+}
+
+
+.custome-btn-white
+{
+    height: 45px;
+    border-radius: 4px;
+    border: 0;
+    background-color: red;
+    /* border: 2px solid black; */
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+
+.custome-btn-black
+{
+    height: 56px;
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    background-color: black;
+    /* border: 2px solid black; */
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+
+.custome-btn-black:hover
+{
+    background-color: rgb(54, 54, 54);
+    
+}
