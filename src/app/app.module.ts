@@ -16,7 +16,10 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { LoginComponent } from './routes/login/login.component';
 import { AccessAccountComponent } from './components/access-account/access-account.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { NotFoundComponent } from './routes/not-found/not-found.component';
+import { HomeComponent } from './routes/home/home.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import {HttpClientModule} from '@angular/common/http'
     LoginComponent,
     CreateAccountComponent,
     HeaderComponent,
-    AccessAccountComponent
+    AccessAccountComponent,
+    NotFoundComponent,
+    HomeComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,

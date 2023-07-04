@@ -1,0 +1,26 @@
+/* :host
+{
+    height: 100vh;
+} */
+
+.container
+{
+    width: 100%;
+    max-width: 300px;
+    background-color: black;
+    height: 100%;
+    padding: 1rem;
+}
+
+ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+li
+{
+    font-size: 2rem;
+    height: 2rem;
+}
