@@ -1,5 +1,14 @@
-<div class="container">
-    <ul>
-        <li *ngFor="let item of menuItems">{{item.name}}</li>
-    </ul>
+<div class="wrapper">
+    <div class="sidebar" [ngClass]="{'sidebar-closed': !sidebarVisible}">
+        <div style="display: flex; flex-direction: column; justify-content: right; align-items: end; margin-bottom: 1rem;">
+            <button (click)="toggleSidebar()" class="close-btn">X</button>
+        </div>
+        <h1 style=" text-align: center; margin-bottom: 2rem;"><strong>NoMenu.</strong></h1>
+        <ul>
+            <li *ngFor="let item of menuItems"><a routerLink={{item.url}}>{{item.name}}</a></li>
+        </ul>
+    </div>
+    <div class="content" [ngClass]="{'content-full': !sidebarVisible}">
+        <ng-content/>    
+    </div>
 </div>

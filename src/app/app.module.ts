@@ -19,7 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { NotFoundComponent } from './routes/not-found/not-found.component';
 import { HomeComponent } from './routes/home/home.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component'
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { MenusComponent } from './routes/menus/menus.component';
+import { CommentsComponent } from './routes/comments/comments.component';
+import { CommentsTrackerComponent } from './components/comments-tracker/comments-tracker.component';
+import { TopItemsComponent } from './components/top-items/top-items.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { SideNavComponent } from './components/side-nav/side-nav.component'
     AccessAccountComponent,
     NotFoundComponent,
     HomeComponent,
-    SideNavComponent
+    SideNavComponent,
+    MenusComponent,
+    CommentsComponent,
+    CommentsTrackerComponent,
+    TopItemsComponent
   ],
   imports: [
     BrowserModule,
