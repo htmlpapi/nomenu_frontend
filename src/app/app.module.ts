@@ -24,6 +24,9 @@ import { MenusComponent } from './routes/menus/menus.component';
 import { CommentsComponent } from './routes/comments/comments.component';
 import { CommentsTrackerComponent } from './components/comments-tracker/comments-tracker.component';
 import { TopItemsComponent } from './components/top-items/top-items.component'
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { TopItemsComponent } from './components/top-items/top-items.component'
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatButtonToggleModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

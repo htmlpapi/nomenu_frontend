@@ -1,3 +1,67 @@
 <app-side-nav>
-    <p>Menu work</p>
+    <div class="page">
+        <div class="container">
+            <h1><strong>{{settingsOptions == 'store' ? 'Store settings': 'Menu settings' }}</strong></h1>
+            <mat-button-toggle-group style="margin-bottom: 2rem;" name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle (click)="handleSettingStore()"  value="bold">Store settings</mat-button-toggle>
+                <mat-button-toggle (click)="handleSettingMenu()" value="italic">Menu settings</mat-button-toggle>
+            </mat-button-toggle-group>
+            <div *ngIf="settingsOptions == 'store'" class="store-settings" >
+                <form class="menu-settings-form" action="">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Restaurant name</mat-label>
+                        <input matInput type="text" placeholder="Ex. Pizza place">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Menu URL</mat-label>
+                        <input matInput placeholder="nomenu/store/[BusinessName]">
+                    </mat-form-field>
+                    <div class="img-select-container">
+                        <button type="button" (click)="openInput()" class="custome-btn-black">Upload file 📁</button>
+                        <input #fileInput hidden='true' type="file">
+                    </div>
+                </form>
+            </div>
+            <div [hidden]="settingsOptions == 'store'" class="menu-settings">
+                
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+                  
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                      </ng-container>
+                  
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                      </ng-container>
+                  
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="weight">
+                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                      </ng-container>
+                  
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="symbol">
+                        <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                      </ng-container>
+                  
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                  
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                   showFirstLastButtons
+                                   aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                  </div>
+                
+            </div>
+        </div>
+    </div>
 </app-side-nav>
