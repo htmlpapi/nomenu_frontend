@@ -14,6 +14,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { LoginComponent } from './routes/login/login.component';
+import { AccessAccountComponent } from './components/access-account/access-account.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { LoginComponent } from './routes/login/login.component';
     RegisterComponent,
     LoginComponent,
     CreateAccountComponent,
-    HeaderComponent
+    HeaderComponent,
+    AccessAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { LoginComponent } from './routes/login/login.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

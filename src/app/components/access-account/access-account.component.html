@@ -1,0 +1,19 @@
+<div class="title">
+    <h1>Login</h1>    
+    <!-- <p>Let's get started with your 30 days free trial</p> -->
+</div>
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Juan@email.com">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" type="password" matInput placeholder="Ex. Pizza">
+    </mat-form-field>
+    <button type="submit" class="custome-btn-black">Sing Up</button>
+    <div>
+        <p>Already have an account? <a href="">Log in</a></p>
+        <p>Forgot password? <a href="">Reset</a></p>
+    </div>
+</form>
