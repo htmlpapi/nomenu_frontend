@@ -27,6 +27,7 @@ import { TopItemsComponent } from './components/top-items/top-items.component'
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { AddItemComponent } from './routes/add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
     MenusComponent,
     CommentsComponent,
     CommentsTrackerComponent,
-    TopItemsComponent
+    TopItemsComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,

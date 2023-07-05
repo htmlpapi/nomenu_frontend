@@ -1,6 +1,9 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpEventType, HttpHeaders} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menus',
@@ -8,8 +11,20 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
   styleUrls: ['./menus.component.css']
 })
 export class MenusComponent implements AfterViewInit {
-  
+
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router){ }
+
+  uploadedImage: any;
   settingsOptions: string = 'store';
+  imageUrl: string = 'https://static.thenounproject.com/png/3674271-200.png';
+
+  restaurant = this.formBuilder.group(
+    {
+      restaurantName: ['',Validators.required],
+      menuUrl: ['', Validators.required],
+      file: ['']
+    }
+  )
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
@@ -35,6 +50,58 @@ export class MenusComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  onImageUpload(event:any): void{
+    this.uploadedImage = event.target.files[0];
+    this.imageUrl = URL.createObjectURL(event.target.files[0])
+  }
+
+
+  onSubmit(): void
+  {
+    if (this.restaurant.invalid) {
+      return;
+    }
+
+    const formData = new FormData();
+
+    const restaurantName = this.restaurant.value.restaurantName;
+    if (restaurantName) {
+      formData.append('restaurantName', restaurantName);
+    }
+
+    const menuUrl = this.restaurant.value.menuUrl;
+    if (menuUrl) {
+      formData.append('menuUrl', menuUrl);
+    }
+
+    if (this.uploadedImage) {
+      formData.append('file', this.uploadedImage);
+    }
+
+    const token = sessionStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    this.http.post<any>('http://localhost:3000/menu/store', formData, { headers }).subscribe( data => 
+    {
+      console.log(data)
+      if(data.status == 'ok')
+      {
+
+      }
+    }
+    );
+
+
+    const file = this.restaurant.value.file;
+    console.log(file)
+
+  
+
   }
 }
 

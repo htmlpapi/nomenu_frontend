@@ -7,23 +7,31 @@
                 <mat-button-toggle (click)="handleSettingMenu()" value="italic">Menu settings</mat-button-toggle>
             </mat-button-toggle-group>
             <div *ngIf="settingsOptions == 'store'" class="store-settings" >
-                <form class="menu-settings-form" action="">
+                <form [formGroup]="restaurant" class="menu-settings-form" (ngSubmit)="onSubmit()">
                     <mat-form-field class="example-full-width">
                         <mat-label>Restaurant name</mat-label>
-                        <input matInput type="text" placeholder="Ex. Pizza place">
+                        <input formControlName="restaurantName" matInput type="text" placeholder="Ex. Pizza place">
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
                         <mat-label>Menu URL</mat-label>
-                        <input matInput placeholder="nomenu/store/[BusinessName]">
+                        <input formControlName="menuUrl" type="text" matInput placeholder="nomenu/store/[BusinessName]">
                     </mat-form-field>
                     <div class="img-select-container">
                         <button type="button" (click)="openInput()" class="custome-btn-black">Upload file 📁</button>
-                        <input #fileInput hidden='true' type="file">
+                        <input (change)="onImageUpload($event)" accept="image/png, image/gif, image/jpeg" formControlName="file" name="file"  #fileInput hidden='true' type="file">
+                        <div class="imagePreview" *ngIf="imageUrl && imageUrl !== ''">
+                          <img [src]="imageUrl" alt="Business logo">
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: end; margin-top: 1rem;">
+                      <button type="submit" class="custome-btn-black" style="width: 80px; background-color: #656565;">💾</button>
                     </div>
                 </form>
             </div>
             <div [hidden]="settingsOptions == 'store'" class="menu-settings">
-                
+              <div style="display: flex; justify-content: end; margin-bottom: 1rem;">
+                <button type="button" class="custome-btn-black btnSmall"><a routerLink="add-item" >Add item</a></button>
+              </div>
                 <div class="mat-elevation-z8">
                     <table mat-table [dataSource]="dataSource">
                   

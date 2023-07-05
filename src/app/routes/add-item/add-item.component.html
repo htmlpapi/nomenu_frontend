@@ -1,0 +1,22 @@
+<app-side-nav>
+    <div class="page">
+        <div class="container">
+            <h1><strong>Add item</strong></h1>
+            <form class="custome-form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Item Name</mat-label>
+                    <input matInput type="text" placeholder="Ex. Pizza place">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Item description</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                  </mat-form-field>
+                  <h3><strong>Item image</strong></h3>
+                <div class="img-select-container">
+                    <button type="button" (click)="openInput()" class="custome-btn-black">Upload file 📁</button>
+                    <input #fileInput hidden='true' type="file">
+                </div>
+            </form>
+        </div>
+    </div>
+</app-side-nav>

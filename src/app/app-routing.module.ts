@@ -9,6 +9,7 @@ import { NotFoundComponent } from './routes/not-found/not-found.component';
 import { HomeComponent } from './routes/home/home.component';
 import { MenusComponent } from './routes/menus/menus.component';
 import { CommentsComponent } from './routes/comments/comments.component';
+import { AddItemComponent } from './routes/add-item/add-item.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'menu', component: MenusComponent, canMatch: [authGuard]},
   { path: 'comments', component: CommentsComponent, canMatch: [authGuard]},
+  { path: 'menu/add-item', component: AddItemComponent, canMatch: [authGuard]},
   { path: '**', component: NotFoundComponent} 
 ];
 
