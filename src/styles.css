@@ -14,7 +14,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --default-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     --medium-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     --strong-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    --default-grey: #EFF3F6;
+    --default-gray: #EFF3F6;
 }
 /* ---- */
 
@@ -65,3 +65,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: rgb(54, 54, 54);
     
 }
+
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }

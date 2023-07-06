@@ -13,12 +13,16 @@ export class AddItemComponent {
 
     constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router){ }
 
-    formLogin = this.formBuilder.group(
-    {
-      email: ['',[Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    }
-  )
+    uploadedImage?: File;
+    imageUrl?: string;
+
+    menuItems = this.formBuilder.group(
+      {
+        itemName: ['',Validators.required],
+        itemDescription: ['', Validators.required],
+        file: ['']
+      }
+    )
 
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
@@ -27,4 +31,50 @@ export class AddItemComponent {
     this.fileInput.nativeElement.click();
   }
 
+  onImageUpload(event:any)
+  {
+    this.uploadedImage = event.target.files[0];
+    this.imageUrl = URL.createObjectURL(event.target.files[0])
+  }
+
+  onSubmit()
+  {
+    if (this.menuItems.invalid) {
+      return;
+    }
+
+    
+    const formData = new FormData();
+
+    const token = sessionStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    const itemName = this.menuItems.value.itemName;
+    if (itemName) {
+      formData.append('itemName', itemName);
+    }
+
+    const itemDescription = this.menuItems.value.itemDescription;
+    if (itemDescription) {
+      formData.append('itemDescription', itemDescription);
+    }
+
+    if (this.uploadedImage) {
+      formData.append('file', this.uploadedImage);
+    }
+
+    this.http.post<any>('http://localhost:3000/menu/add-item', formData, { headers }).subscribe( data => 
+    {
+      console.log(data)
+      if(data.status == 'ok')
+      {
+
+      }
+    }
+    );
+
+  }
 }

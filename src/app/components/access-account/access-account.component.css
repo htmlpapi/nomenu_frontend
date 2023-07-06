@@ -36,7 +36,10 @@ label
     font-size: 2rem;
 }
 
-
-
-
-
+.imagePreview img
+{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    max-height: 300px;
+}

@@ -10,6 +10,8 @@ import { HomeComponent } from './routes/home/home.component';
 import { MenusComponent } from './routes/menus/menus.component';
 import { CommentsComponent } from './routes/comments/comments.component';
 import { AddItemComponent } from './routes/add-item/add-item.component';
+import { StoreComponent } from './routes/store/store.component';
+import { StoreItemComponent } from './routes/store-item/store-item.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'menu', component: MenusComponent, canMatch: [authGuard]},
   { path: 'comments', component: CommentsComponent, canMatch: [authGuard]},
   { path: 'menu/add-item', component: AddItemComponent, canMatch: [authGuard]},
+  {path: 'store/:storeUrl', component: StoreComponent},
+  {path: 'store/:storeUrl/:', component: StoreItemComponent},
   { path: '**', component: NotFoundComponent} 
 ];
 

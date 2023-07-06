@@ -59,7 +59,7 @@ a
 
 .content
 {
-    background-color: var(--default-grey);
+    background-color: var(--default-gray);
     width: 100%;
     margin-left: 250px;
     transition: all 0.3s ease;

@@ -2,28 +2,31 @@
     <h1>Create your account</h1>    
     <p>Let's get started with your 30 days free trial</p>
 </div>
-<form>
+<form [formGroup]="createAccount" (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Ex. Pizza">
+        <input formControlName="name" matInput placeholder="Ex. Pizza">
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Juan@email.com">
+        <input formControlName="email" matInput placeholder="Juan@email.com">
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Confirm email</mat-label>
-        <input matInput placeholder="Juan@email.com">
+        <input formControlName="confirmEmail" matInput placeholder="Juan@email.com">
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Ex. Pizza">
+        <div class="password-input">
+            <input [type]="showPassword ? 'text':'password'" formControlName="password" matInput placeholder="Ex. Pizza">
+            <h1 (click)="handleShowPassword()">👁</h1>
+        </div>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="password-class">
         <mat-label>Confirm password</mat-label>
-        <input matInput placeholder="Ex. Pizza">
+        <input [type]="showPassword ? 'text':'password'" formControlName="confirmPassword" matInput placeholder="Ex. Pizza">
     </mat-form-field>
-    <button type="button" class="custome-btn-black">Sing Up</button>
+    <button type="submit" class="custome-btn-black">Sing Up</button>
     <div>
         <p>Already have an account? <a href="">Log in</a></p>
         <p>Forgot password? <a href="">Reset</a></p>
