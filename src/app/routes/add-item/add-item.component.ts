@@ -66,7 +66,7 @@ export class AddItemComponent {
       formData.append('file', this.uploadedImage);
     }
 
-    this.http.post<any>('http://localhost:3000/menu/add-item', formData, { headers }).subscribe( data => 
+    this.http.post<any>('http://localhost:3000/menu/item', formData, { headers }).subscribe( data => 
     {
       console.log(data)
       if(data.status == 'ok')

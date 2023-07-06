@@ -47,6 +47,9 @@ export class StoreComponent implements OnInit {
             });
 
             this.topFive = this.topFive.slice(0, 5);
+
+            this.restaurantName = data.data[0].restaurantName
+            this.storeUrl = data.data[0].storeUrl
             
           }
         }
@@ -57,6 +60,8 @@ export class StoreComponent implements OnInit {
 
   public menuData?: any;
   public topFive?: any;
+  public restaurantName?: string;
+  public storeUrl?: string;
 
 }
 

@@ -39,7 +39,7 @@ h1
 {
     font-size: 2.3rem;
     height: 2.3rem;
-    margin: 1rem .5rem 1rem .5rem;
+    margin: 1rem .5rem 2rem .5rem;
 }
 
 
@@ -58,6 +58,7 @@ h1
 {
     height: 100%;
     list-style: none;
+    width: 150px;
 }
 
 .slider img
@@ -91,6 +92,15 @@ h2{
     margin: 1rem;
 }
 
+.menu-section li{
+    list-style: none;
+}
+
+.menu-section a
+{
+    color: inherit;
+    text-decoration: none;
+}
 
 
 .menu-item
@@ -99,7 +109,8 @@ h2{
     height: 150px;
     justify-content: space-between;
     width: 100%;
-    gap: .3rem;
+    gap: 1rem;
+    cursor: pointer;
 }
 
 .menu-item img

@@ -1,30 +1,32 @@
 <div *ngIf="menuData" class="container">
     <main class="page">
         <header class="img-container">
-            <img src="https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_Seine_Tour_Eiffel_2.jpg" alt="">
+            <img [src]="storeUrl" alt="">
         </header>
         <div class="sections">
-            <h1><strong>PokeLele</strong></h1>
+            <h1><strong>{{restaurantName}}</strong></h1>
             <section class="top">
                 <h2><strong>Lo más popular</strong></h2>
                 <ol class="slider">
                     <li *ngFor="let item of topFive">
-                        <img src="https://gourmetdemexico.com.mx/wp-content/uploads/2020/02/presentacio%CC%81n-de-platillos.jpg" alt="">
-                        <h3>Platillo 1</h3>
+                        <img [src]="item.fileUrl" alt="">
+                        <h3>{{item.itemName}}</h3>
                     </li>
                 </ol>
             </section>
             <section class="menu-section">
                 <h2><strong>Menu</strong></h2>
                 <ol>
-                    <li *ngFor="let item of menuData" class="menu-item">
-                        <div>
-                            <h3>{{item.itemName}}</h3>
+                    <li *ngFor="let  item of menuData">
+                        <a routerLink={{item.itemId}} class="menu-item">
                             <div>
-                                <p style="text-align: justify;">{{item.itemDescription}}</p>
+                                <h3>{{item.itemName}}</h3>
+                                <div>
+                                    <p style="text-align: justify;">{{item.itemDescription}}</p>
+                                </div>
                             </div>
-                        </div>
-                        <img [src]="item.fileUrl" alt="">
+                            <img [src]="item.fileUrl" alt="">
+                        </a>
                     </li>
                 </ol>
             </section>

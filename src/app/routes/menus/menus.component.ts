@@ -28,7 +28,7 @@ export class MenusComponent implements OnInit {
       if(data.status == 'ok')
       {
         this.menuData = data.data
-        this.imageUrl = data.data[0].fileUrl;
+        this.imageUrl = data.data[0].storeUrl;
         this.restaurant.patchValue({
           restaurantName: data.data[0].restaurantName,
           menuUrl: data.data[0].menuUrl

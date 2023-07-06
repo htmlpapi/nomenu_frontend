@@ -1,0 +1,29 @@
+<app-side-nav>
+    <div class="page">
+        <div class="container">
+            <h1><strong>Edit item</strong></h1>
+            <form [formGroup]="menuItem" (ngSubmit)="onSubmit()" class="custome-form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Item Name</mat-label>
+                    <input formControlName="itemName" matInput type="text" placeholder="Ex. Pizza with apple">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Item description</mat-label>
+                    <textarea formControlName="itemDescription" matInput placeholder="Ex. Delicious pizza with apple..."></textarea>
+                  </mat-form-field>
+                  <h3><strong>Item image</strong></h3>
+                    <div class="img-select-container">
+                        <button type="button" (click)="openInput()" class="custome-btn-black">Upload file 📁</button>
+                        <input (change)="onImageUpload($event)" accept="image/png, image/gif, image/jpeg" formControlName="file" name="file"  #fileInput hidden='true' type="file">
+                        <div class="imagePreview" *ngIf="imageUrl && imageUrl !== ''">
+                          <img [src]="imageUrl" alt="Business logo">
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: end; margin-top: 1rem; gap: 1rem;">
+                        <button type="button" (click)="onDelete()" class="custome-btn-black" style="width: 80px; background-color: #ff3f3f;">🗑</button>
+                        <button type="submit" class="custome-btn-black" style="width: 80px; background-color: #656565;">💾</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</app-side-nav>

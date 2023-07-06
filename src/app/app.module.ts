@@ -30,6 +30,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { AddItemComponent } from './routes/add-item/add-item.component';
 import { StoreComponent } from './routes/store/store.component';
 import { StoreItemComponent } from './routes/store-item/store-item.component';
+import { ModifyItemComponent } from './routes/modify-item/modify-item.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { StoreItemComponent } from './routes/store-item/store-item.component';
     TopItemsComponent,
     AddItemComponent,
     StoreComponent,
-    StoreItemComponent
+    StoreItemComponent,
+    ModifyItemComponent
   ],
   imports: [
     BrowserModule,
