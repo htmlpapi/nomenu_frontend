@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-comments-tracker',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./comments-tracker.component.css']
 })
 export class CommentsTrackerComponent {
+
+  @Input() title?: string;
+  @Input() total?: number;
 
 }

@@ -23,10 +23,6 @@ export class SideNavComponent {
       'url': '/menu'
     },
     {
-      'name': '🎭 Comments',
-      'url': '/comments'
-    },
-    {
       'name': '🚪 Log out',
       'url': '/home'
     },

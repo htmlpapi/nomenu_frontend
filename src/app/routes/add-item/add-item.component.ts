@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-item',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddItemComponent {
 
-    constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router){ }
+    constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private _snackBar: MatSnackBar){ }
 
     uploadedImage?: File;
     imageUrl?: string;
@@ -71,10 +72,17 @@ export class AddItemComponent {
       console.log(data)
       if(data.status == 'ok')
       {
-
+        this.menuItems.reset();
+        this.imageUrl = '';
+        this.openSnackBar(data.message, 'close')
       }
     }
     );
 
+  }
+
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

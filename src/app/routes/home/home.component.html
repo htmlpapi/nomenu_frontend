@@ -1,10 +1,9 @@
 <app-side-nav>
     <div class="page">
         <div class="top-grid">
-            <app-comments-tracker/>
-            <app-comments-tracker/>
-            <app-comments-tracker/>
+            <app-comments-tracker [total]="totalLikes" [title]="'Likes'"/>
+            <app-comments-tracker [total]="totalDislikes" [title]="'Dislikes'"/>
         </div>
-        <app-top-items/>
+        <app-top-items *ngIf="itemsData"  [itemsData]="itemsData"/>
     </div>
 </app-side-nav>

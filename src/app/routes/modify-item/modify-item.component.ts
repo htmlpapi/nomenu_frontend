@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modify-item',
@@ -10,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ModifyItemComponent implements OnInit{
 
-  constructor(private http:HttpClient, private formBuilder: FormBuilder, private router: Router, private route:ActivatedRoute){}
+  constructor(private http:HttpClient, private formBuilder: FormBuilder, private router: Router, private route:ActivatedRoute, private _snackBar: MatSnackBar){}
 
   uploadedImage?: File;
   imageUrl?: string;
@@ -103,10 +104,17 @@ export class ModifyItemComponent implements OnInit{
       console.log(data)
       if(data.status == 'ok')
       {
-
+        this.menuItem.reset();
+        this.imageUrl = '';
+        this.openSnackBar(data.message, 'close')
+        this.router.navigate(['/menu']);
       }
     }
     );
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   onSubmit()
@@ -150,7 +158,7 @@ export class ModifyItemComponent implements OnInit{
       console.log(data)
       if(data.status == 'ok')
       {
-
+        this.openSnackBar(data.message, 'close')
       }
     }
     );

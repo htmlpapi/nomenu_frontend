@@ -57,4 +57,71 @@ export class StoreItemComponent implements OnInit{
   public itemDescription?: string;
   public fileUrl?: string;
 
+
+  handleLike()
+  {
+
+    const menuUrl = this.route.snapshot.paramMap.get('storeUrl')
+    const itemId = this.route.snapshot.paramMap.get('itemId')
+
+    const headers = { 'Content-Type': 'application/json'};
+
+    const body = {
+      itemId: itemId,
+      menuUrl: menuUrl,
+    };
+
+    this.http.post<any>('http://localhost:3000/stores/like', body, { headers }).subscribe(data => {
+      console.log(data)
+
+      this.itemData = data.data;
+
+      if(this.itemData)
+      {
+        const menuData = Object.keys(this.itemData);
+  
+        if(data.data.status == 'ok')
+        {
+          console.log(data)
+        }
+        
+      }
+  
+    })
+  
+  }
+
+  handleDislike()
+  {
+
+    const menuUrl = this.route.snapshot.paramMap.get('storeUrl')
+    const itemId = this.route.snapshot.paramMap.get('itemId')
+
+    const headers = { 'Content-Type': 'application/json'};
+
+    const body = {
+      itemId: itemId,
+      menuUrl: menuUrl,
+    };
+
+    this.http.post<any>('http://localhost:3000/stores/dislike', body, { headers }).subscribe(data => {
+      console.log(data)
+
+      this.itemData = data.data;
+
+      if(this.itemData)
+      {
+        const menuData = Object.keys(this.itemData);
+  
+        if(data.data.status == 'ok')
+        {
+          console.log(data)
+        }
+        
+      }
+  
+    })
+
+  }
+
 }

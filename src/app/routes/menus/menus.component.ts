@@ -3,6 +3,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpEventType, HttpHeaders} from '@angular/common/http';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class MenusComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router){ }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private _snackBar: MatSnackBar){ }
 
   ngOnInit(): void {
 
@@ -95,6 +96,10 @@ export class MenusComponent implements OnInit {
     this.imageUrl = URL.createObjectURL(event.target.files[0])
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
 
   onSubmit(): void
   {
@@ -136,7 +141,7 @@ export class MenusComponent implements OnInit {
             console.log(data)
             if(data.status == 'ok')
             {
-              return(data)
+              this.openSnackBar(data.message, 'close')
             }
           }
         );
@@ -149,7 +154,7 @@ export class MenusComponent implements OnInit {
           console.log(data)
           if(data.status == 'ok')
           {
-            return(data)
+            this.openSnackBar(data.message, 'close')
           }
         }
       );
@@ -159,6 +164,7 @@ export class MenusComponent implements OnInit {
 
 
   }
+
 }
 
 export interface ItemsData {

@@ -31,6 +31,7 @@ import { AddItemComponent } from './routes/add-item/add-item.component';
 import { StoreComponent } from './routes/store/store.component';
 import { StoreItemComponent } from './routes/store-item/store-item.component';
 import { ModifyItemComponent } from './routes/modify-item/modify-item.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ModifyItemComponent } from './routes/modify-item/modify-item.component'
     HttpClientModule,
     MatButtonToggleModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

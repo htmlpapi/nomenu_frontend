@@ -9,6 +9,10 @@
                 <img src="" alt="">
                 <h2>Description</h2>
                 <p>{{itemDescription}}</p>
+                <div class="thumbs">
+                    <button (click)="handleLike()" class="custome-btn-black" >👍🏼</button>
+                    <button (click)="handleDislike()" class="custome-btn-black">👎🏼</button>
+                </div>
             </section>
         </div>
     </main>
