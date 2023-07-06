@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface MenuItem {
   name: string;
@@ -12,6 +13,8 @@ interface MenuItem {
 })
 export class SideNavComponent {
 
+  constructor(private router: Router){}
+
   menuItems: Array<MenuItem> = 
   [
     {
@@ -21,10 +24,6 @@ export class SideNavComponent {
     {
       'name': '🍜 Menu',
       'url': '/menu'
-    },
-    {
-      'name': '🚪 Log out',
-      'url': '/home'
     },
 
   ]
@@ -36,5 +35,11 @@ export class SideNavComponent {
     this.sidebarVisible = !this.sidebarVisible;
   }
 
+
+  logout()
+  {
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+  }
 
 }

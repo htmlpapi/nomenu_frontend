@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-account',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CreateAccountComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router){}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private _snackBar: MatSnackBar){}
 
   ngOnInit(): void {
       
@@ -38,6 +39,10 @@ export class CreateAccountComponent implements OnInit {
         }
       } 
 
+    }
+
+    openSnackBar(message: string, action: string) {
+      this._snackBar.open(message, action);
     }
 
 
@@ -84,6 +89,12 @@ export class CreateAccountComponent implements OnInit {
         if(data.status == 'ok')
         {
           this.router.navigate(['/']);
+          this.openSnackBar(data.message,'close')
+        }
+
+        if(data.status == 'error')
+        {
+          this.openSnackBar(data.message,'close')
         }
     });
   }

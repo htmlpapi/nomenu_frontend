@@ -16,7 +16,7 @@ import { ModifyItemComponent } from './routes/modify-item/modify-item.component'
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
-  { path: 'home', component: HomeComponent, canMatch: [authGuard]},
+  { path: 'home', component: HomeComponent, canActivate: [authGuard]},
   { path: 'register', component: RegisterComponent },
   { path: 'menu', component: MenusComponent, canMatch: [authGuard]},
   { path: 'comments', component: CommentsComponent, canMatch: [authGuard]},
